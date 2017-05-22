@@ -19,6 +19,10 @@ const models = {
     name: 'Task',
     endpoint: 'tasks'
   },
+  comment: {
+    name: 'Comment',
+    endpoint: 'comments'
+  },
   user: {
     name: 'User',
     endpoint: 'users',
