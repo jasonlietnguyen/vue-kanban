@@ -3,17 +3,17 @@ let env = {
 	NODE_ENV: 'development',
 	PORT: 3000,
 	DBPROTOCOL: 'mongodb',
-	DBUSERNAME: 'student',
-	DBPASSWORD: 'CodeWorksStudent',
-	DBHOST: 'ds056789.mlab.com:56789',
-	DBNAME: 'codeworks',
+	DBUSERNAME: 'jasonnathan',
+	DBPASSWORD: 'jasonnathan',
+	DBHOST: 'ds149511.mlab.com:49511',
+	DBNAME: 'kanbanfordummys',
 	SERVERNAME: 'dev-server'
 }
 
 // MAPS env TO ACTUAL ENVIRONMENT
 Object.keys(env).forEach(v => {
 	process.env[v] = process.env[v] || env[v]
-}) 
+})
 
 
 // MongoDb Connection String Builder
