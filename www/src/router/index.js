@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Boards from 'components/Boards'
 import Board from 'components/Board'
-import Home from 'components/Homepage'
+import Homepage from 'components/Homepage'
 
 Vue.use(Router)
 
