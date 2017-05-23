@@ -1,6 +1,5 @@
 <template>
   <div class="homepage">
-<<<<<<< HEAD
     <nav class="navbar navbar-toggleable-md navbar-light">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,15 +27,16 @@
         <br>
         <p>Already use Trello? Log in.</p>
         <button type="button" class="btn btn-success">Sign Up - It's Free</button>
-        <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/155358fcb5830aa596ac191b15bb0bb2/trello-collaborate-home.png" alt="" width="800px">
-      </div>
-      <div class="col-md-2">
       </div>
     </div>
-    div.row
+    <div class="row">
+      <div class="col-md-4">a</div>
+      <div class="col-md-8">
+          <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/155358fcb5830aa596ac191b15bb0bb2/trello-collaborate-home.png" alt="" width="800px">
+      <br><br><br>
+      </div>
+    </div>
   </div>
-=======
->>>>>>> 9f8e67423b9b5f6e7cd6051d968b5ad00eb5d748
 
   </div>
 </template>
