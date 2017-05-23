@@ -22,10 +22,9 @@ export default {
     reqType: 'get',
      method(req, res, next){
        debugger
-      let action = 'Get All Task On A List'
+      let action = 'Get All Tasks On A List'
       Tasks.find({listId: req.params.listId})
         .then(tasks => {
-
         Promise.all(tasks.map(task =>{
           return Comments.find({taskId: task._id}).then(comments => {
             task.comments = comments
@@ -39,7 +38,6 @@ export default {
     }
   }
 }
-
 
 
 function handleResponse(action, data, error) {
