@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <error></error>
-    <router-view></router-view>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
