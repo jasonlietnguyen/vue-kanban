@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
 	created: { type: Number, default: Date.now() },
 	creatorId: {type: ObjectId, ref: models.user.name, required: true},
 	// Relations
-	boardId: { type: ObjectId, ref: models.board, required: true }
+	boardId: { type: ObjectId, ref: models.board.name, required: true }
 
 });
 

@@ -6,7 +6,7 @@ let api = axios.create({
   withCredentials: true
 })
 
-// REGISTER ALL DATA HERE 
+// REGISTER ALL DATA HERE
 let state = {
   boards: [{name: 'This is total rubbish'}],
   activeBoard: {},
@@ -50,6 +50,7 @@ export default {
         })
         .catch(handleError)
     }
+
   }
 
 }
