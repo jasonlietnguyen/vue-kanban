@@ -1,5 +1,6 @@
 <template>
   <div class="homepage">
+<<<<<<< HEAD
     <nav class="navbar navbar-toggleable-md navbar-light">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -34,6 +35,8 @@
     </div>
     div.row
   </div>
+=======
+>>>>>>> 9f8e67423b9b5f6e7cd6051d968b5ad00eb5d748
 
   </div>
 </template>
