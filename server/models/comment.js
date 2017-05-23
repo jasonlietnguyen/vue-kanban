@@ -8,9 +8,9 @@ var schema = new mongoose.Schema({
 	created: { type: Number, default: Date.now() },
   creatorId: {type: ObjectId, ref: models.user.name, required: true},
 	// Relations
-	boardId: { type: ObjectId, ref: models.board, required: true },
-	listId: { type: ObjectId, ref: models.list,  required: true},
-	taskId: {type: ObjectId, ref: models.task, required: true}
+	boardId: { type: ObjectId, ref: models.board.name, required: true },
+	listId: { type: ObjectId, ref: models.list.name,  required: true},
+	taskId: {type: ObjectId, ref: models.task.name, required: true}
 });
 
 module.exports = mongoose.model(models.comment.name, schema);

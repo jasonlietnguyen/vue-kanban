@@ -1,6 +1,7 @@
 let Boards = require('../models/board')
 let Lists = require('../models/list')
 let Tasks = require('../models/task')
+let Comments = require('../models/comment')
 
 export default {
   getListsOnBoard: {
@@ -24,7 +25,14 @@ export default {
       let action = 'Get All Task On A List'
       Tasks.find({listId: req.params.listId})
         .then(tasks => {
+
+        Promise.all(tasks.map(task =>{
+          return Comments.find({taskId: task._id}).then(comments => {
+            task.comments = comments
+          })
+        })).then(() => {
           res.send(handleResponse(action, tasks))
+        })
         }).catch(error => {
           return next(handleResponse(action, null, error))
         })
