@@ -4,6 +4,7 @@ import Boards from 'components/Boards'
 import Board from 'components/Board'
 import Homepage from 'components/Homepage'
 import Login from 'components/Login'
+import Register from 'components/Register'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     }
   ]
 })
