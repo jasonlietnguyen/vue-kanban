@@ -14,6 +14,7 @@ let state = {
 }
 
 let handleError = (err) => {
+  debugger
   state.error = err
 }
 
@@ -49,6 +50,18 @@ export default {
           this.getBoards()
         })
         .catch(handleError)
+    },
+    login(user){
+      api.post('login', user)
+        .then(res => {
+          // if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
+          //   debugger
+
+          // }
+
+        })
+        .catch(handleError)
+        debugger
     }
 
   }
