@@ -10,10 +10,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav navbar-toggler-right">
       <li class="nav-item">
-        <a class="nav-link" href="#">Sign In</a>
+        <button type="button" class="btn btn-success"><a href="#/register">Sign In</a></button>      
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Log In</a>
+        <button type="button" class="btn btn-primary"><a href="#/login">Log In</a></button>
       </li>
     </ul>
   </div>
@@ -30,8 +30,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">a</div>
-      <div class="col-md-8">
+      <div class="col-md-8 offset-md-4">
           <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/155358fcb5830aa596ac191b15bb0bb2/trello-collaborate-home.png" alt="" width="800px">
       <br><br><br>
       </div>

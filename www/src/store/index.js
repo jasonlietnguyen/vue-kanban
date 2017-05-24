@@ -64,11 +64,15 @@ export default {
           if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
             state.error = res.request.response
 
+<<<<<<< HEAD
           }else{
             debugger
             changeRoute('/boards')
           }
 
+=======
+          // }
+>>>>>>> 76b71a7498a5cf549ca55e6e660b6b8dbcd9772b
         })
         .catch(handleError)
     }
