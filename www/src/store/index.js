@@ -72,9 +72,24 @@ export default {
 
         })
         .catch(handleError)
-    }
+    },
+     register(user){
+      api.post('register', user)
+        .then(res => {
+          debugger
+          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
+            state.error = res.request.response
+
+          }else{
+            debugger
+            this.login(user)
+          }
+
+
+        })
+        .catch(handleError)
 
   }
 
 }
-
+}
