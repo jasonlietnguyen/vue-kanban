@@ -78,6 +78,7 @@ export default {
         .then(res => {
           debugger
           if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
+            //Fix above line to work with register instead of login
             state.error = res.request.response
 
           }else{
