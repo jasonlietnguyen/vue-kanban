@@ -1,18 +1,12 @@
 import axios from 'axios'
 import router from '../router'
 
-
-function changeRoute(route){
-  router.push(route)
-}
-
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
   timeout: 2000,
   withCredentials: true
 })
-
-  let auth = axios.create({
+let auth = axios.create({
   baseURL: 'http://localhost:3000/',
   timeout: 2000,
   withCredentials: true
@@ -27,7 +21,6 @@ let state = {
 }
 
 let handleError = (err) => {
-  debugger
   state.error = err
 }
 
@@ -51,55 +44,50 @@ export default {
         .catch(handleError)
     },
     createBoard(board) {
-      api.post('boards/',board)
+      api.post('boards/', board)
         .then(res => {
           this.getBoards()
         })
         .catch(handleError)
     },
     removeBoard(board) {
-      api.delete('boards/'+board._id)
+      api.delete('boards/' + board._id)
         .then(res => {
           this.getBoards()
         })
         .catch(handleError)
     },
-    login(user){
+    login(user) {
       auth.post('login', user)
         .then(res => {
-          debugger
-          if(res.data.error){
-              handleError(res.data.error)
-            }
-            changeRoute('/boards')
-
-
+          console.log(res)
         })
         .catch(handleError)
     },
-     register(user){
-      auth.post('register', user)
-        .then(res => {
-          if(res.data.error ){
-            //Fix above line to work with register instead of login
-            handleError(res.data.error)
-          }
-            changeRoute('/boards')
-
-
-        })
-        .catch(handleError)
-
-  },
+    register(user) {
+     auth.post('register', user)
+      .then(res =>{
+        console.log(res)
+        if(res.data.error){
+          return handleError(res.data.error)
+        }
+        //LETS REDIRECT THE PAGE
+        state.user = res.data
+        router.push('/boards')
+      })
+      .catch(handleError)
+    },
     getAuth(){
-      auth.get('/authenticate')
+      auth('authenticate')
         .then(res =>{
-          debugger
           state.user = res.data.data
           router.push('/boards')
         }).catch((err =>{
         }))
-    }
 
-}
+    },
+    clearError(){
+      state.error = {}
+    }
+  }
 }
