@@ -27,6 +27,8 @@ export default {
   methods:{
     createBoard(){
       this.$root.$data.store.actions.createBoard({
+        name: "NATHANS TEST BOARD",
+        description: "BOARDING THINGS"
       })
     },
     removeBoard(board){

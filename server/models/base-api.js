@@ -84,7 +84,7 @@ function API(model, schema) {
 
     schema.findById({ _id: id })
     .then(function (data) {
-      data.remove().exec(()=>{
+      data.remove().then(()=>{
         return res.send(handleResponse(action, data))
       })
     })

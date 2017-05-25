@@ -37,14 +37,15 @@ export default {
         .catch(handleError)
     },
     getBoard(id) {
-      api('boards/' + id)
+      api('boards' + id)
         .then(res => {
           state.activeBoard = res.data.data
         })
         .catch(handleError)
     },
     createBoard(board) {
-      api.post('boards/', board)
+      debugger
+      api.post('boards', board)
         .then(res => {
           this.getBoards()
         })
