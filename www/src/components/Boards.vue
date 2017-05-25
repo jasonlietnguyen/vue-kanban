@@ -1,5 +1,6 @@
 <template>
   <div> 
+    <h1>Hello {{user.name}}</h1>
     <button @click="createBoard">Add Board</button>
     <ul>
       <li v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)">x</span></li>
@@ -16,6 +17,9 @@ export default {
   computed:{
     boards(){
       return this.$root.$data.store.state.boards
+    },
+    user(){
+      return this.$root.$data.store.state.user
     }
   },
   methods:{

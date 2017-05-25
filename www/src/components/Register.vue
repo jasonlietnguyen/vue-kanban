@@ -1,56 +1,51 @@
 <template>
   <div class="register">
-    <div class="login-heading">
-      <h1>Register in to Frello</h1>
-    </div>
-    <div class="input">
-        <div class="input-group input-group-lg">
-          <input type="text" v-model="name" class="form-control" placeholder="Name" aria-describedby="sizing-addon1">
-          <input type="text" v-model="email" class="form-control" placeholder="Email" aria-describedby="sizing-addon1">
-          <input type="password" v-model="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
-          <button type="button" @click="register" class="btn btn-success btn-lg">Submit</button>
-        </div>
-        <div>
-        </div>
-    </div>
-
-
+    <form @submit.prevent="register">
+      <div class="form-group">
+        <input type="text" v-model="name" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" required>
+      </div>
+      <div class="form-group">
+        <input type="text" v-model="email" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" required>
+      </div>
+      <div class="form-group">
+        <input type="password" v-model="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
 
-
 <script>
-export default {
-  name: 'register',
-  data(){
-    return{
-      name: "",
-      email: "",
-      password: ""
+  export default {
+    name: 'register',
+    data() {
+      return {
+        name: "",
+        email: "",
+        password: ""
 
-    }
-  },
-  computed:{},
-  methods:{
-    register(){
-      let user = {
-        name: this.name,
-        email: this.email,
-        password: this.password
       }
-      debugger
-      this.$root.$data.store.actions.register(user)
+    },
+    computed: {},
+    methods: {
+      register() {
+        this.$root.$data.store.actions.register({
+          name: this.name,
+          email: this.email,
+          password: this.password
+        })
+      }
+    },
+    components: {}
+  }
 
-    }
-  },
-  components:{}
-}
 </script>
 
 
 <style scoped>
-  .input-group{
+  .input-group {
     width: 50%;
   }
-
 </style>

@@ -1,13 +1,13 @@
 import axios from 'axios'
 import router from '../router'
 
-
-function changeRoute(route){
-  router.push(route)
-}
-
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
+  timeout: 2000,
+  withCredentials: true
+})
+let auth = axios.create({
+  baseURL: 'http://localhost:3000/',
   timeout: 2000,
   withCredentials: true
 })
@@ -16,11 +16,11 @@ let api = axios.create({
 let state = {
   boards: [{}],
   activeBoard: {},
-  error: {}
+  error: {},
+  user: {}
 }
 
 let handleError = (err) => {
-  debugger
   state.error = err
 }
 
@@ -44,53 +44,50 @@ export default {
         .catch(handleError)
     },
     createBoard(board) {
-      api.post('boards/',board)
+      api.post('boards/', board)
         .then(res => {
           this.getBoards()
         })
         .catch(handleError)
     },
     removeBoard(board) {
-      api.delete('boards/'+board._id)
+      api.delete('boards/' + board._id)
         .then(res => {
           this.getBoards()
         })
         .catch(handleError)
     },
-    login(user){
-      api.post('login', user)
+    login(user) {
+      auth.post('login', user)
         .then(res => {
-          debugger
-          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
-            state.error = res.request.response
-
-          }else{
-            debugger
-            changeRoute('/boards')
-          }
-
-
+          console.log(res)
         })
         .catch(handleError)
     },
-     register(user){
-      api.post('register', user)
-        .then(res => {
-          debugger
-          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
-            //Fix above line to work with register instead of login
-            state.error = res.request.response
-
-          }else{
-            debugger
-            this.login(user)
-          }
-
-
+    register(user) {
+     auth.post('register', user)
+      .then(res =>{
+        console.log(res)
+        if(res.data.error){
+          return handleError(res.data.error)
+        }
+        //LETS REDIRECT THE PAGE
+        state.user = res.data
+        router.push('/boards')
+      })
+      .catch(handleError)
+    },
+    getAuth(){
+      auth('authenticate')
+        .then(res =>{
+          state.user = res.data.data
+          router.push('/boards')
+        }).catch(err => {
+          router.push('/login')
         })
-        .catch(handleError)
-
+    },
+    clearError(){
+      state.error = {}
+    }
   }
-
-}
 }
