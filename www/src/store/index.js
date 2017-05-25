@@ -82,9 +82,9 @@ export default {
         .then(res =>{
           state.user = res.data.data
           router.push('/boards')
-        }).catch(err => {
-          router.push('/login')
-        })
+        }).catch((err =>{
+        }))
+
     },
     clearError(){
       state.error = {}
