@@ -80,4 +80,7 @@ p{
 button{
   margin-left: 0
 }
+img{
+  margin-top: -70px;
+}
 </style>
