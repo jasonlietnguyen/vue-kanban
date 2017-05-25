@@ -30,8 +30,36 @@
 
 
 <style scoped>
-  .list-inline li{
-    display: inline-block;
-    margin: 0 3px;
-  }
+.list-inline li{
+  display: inline-block;
+  margin: 0 3px;
+}
+i{
+  color: white;
+}
+.logo{
+  color: white;
+  font-size: 40px;
+}
+h2{
+  margin-top: 100px;
+  color: white;
+  font-weight: 900;
+  text-align: left;
+}
+h5{
+  margin-top: 20px;
+  color: white;
+  text-align: left;
+}
+p{
+  text-align: left;
+  color: white;
+}
+button{
+  margin-left: 0
+}
+img{
+  margin-top: -70px;
+}
 </style>
