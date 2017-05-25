@@ -12,11 +12,18 @@ let api = axios.create({
   withCredentials: true
 })
 
+  let auth = axios.create({
+  baseURL: 'http://localhost:3000/',
+  timeout: 2000,
+  withCredentials: true
+})
+
 // REGISTER ALL DATA HERE
 let state = {
   boards: [{}],
   activeBoard: {},
-  error: {}
+  error: {},
+  user: {}
 }
 
 let handleError = (err) => {
@@ -58,33 +65,25 @@ export default {
         .catch(handleError)
     },
     login(user){
-      api.post('login', user)
+      auth.post('login', user)
         .then(res => {
-          debugger
-          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
-            state.error = res.request.response
-
-          }else{
-            debugger
+          if(res.data.error){
+            handleError(res.data.error)
+            }
             changeRoute('/boards')
-          }
 
 
         })
         .catch(handleError)
     },
      register(user){
-      api.post('register', user)
+      auth.post('register', user)
         .then(res => {
-          debugger
-          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
+          if(res.data.error ){
             //Fix above line to work with register instead of login
-            state.error = res.request.response
-
-          }else{
-            debugger
-            this.login(user)
+            handleError(res.data.error)
           }
+            changeRoute('/boards')
 
 
         })
