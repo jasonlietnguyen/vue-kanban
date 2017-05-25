@@ -1,4 +1,5 @@
 import { models } from '../config/constants'
+import Comments from '/comment'
 
 let mongoose = require('mongoose')
 let ObjectId = mongoose.Schema.ObjectId
@@ -13,5 +14,9 @@ var schema = new mongoose.Schema({
   listId: { type: ObjectId, ref: models.list.name,  required: true},
 	comments: [{ type: ObjectId, ref: models.comment.name}]
 });
+
+schema.pre('remove', function (next){
+  Comments.find({boardId: this._id}).remove().exec(next)
+})
 
 module.exports = mongoose.model(models.task.name, schema);

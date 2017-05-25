@@ -117,29 +117,29 @@ export default {
           })
         })
     }
-  },
-
-  deleletsChildrenOfBoards: {
-    path: '/boards/:boardId',
-    reqType: 'delete',
-    method(req, res, next){
-      debugger
-      let action = 'Removing all children of a Board'
-      Boards.findById(req.params.boardId)
-        .then(board =>{
-          Tasks.find({boardId: req.params.boardId})
-          .then(tasks =>{
-            Lists.find({boardId: req.params.boardId})
-            .then(lists =>{
-              Comments.find({boardId: req.params.boardId})
-              res.send(handleResponse(action))
-            }).catch(error =>{
-              return next(handleResponse(action, null, error))
-            })
-          })
-        })
-    }
   }
+
+  // deleletsChildrenOfBoards: {
+  //   path: '/boards/:boardId',
+  //   reqType: 'delete',
+  //   method(req, res, next){
+  //     debugger
+  //     let action = 'Removing all children of a Board'
+  //     Boards.findById(req.params.boardId)
+  //       .then(board =>{
+  //         Tasks.find({boardId: req.params.boardId})
+  //         .then(tasks =>{
+  //           Lists.find({boardId: req.params.boardId})
+  //           .then(lists =>{
+  //             Comments.find({boardId: req.params.boardId})
+  //             res.send(handleResponse(action))
+  //           }).catch(error =>{
+  //             return next(handleResponse(action, null, error))
+  //           })
+  //         })
+  //       })
+  //   }
+  // }
 
 
 
