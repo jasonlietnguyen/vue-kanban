@@ -25,7 +25,7 @@ export default {
   data(){
     return{
       email: "",
-      password: ""
+      password: "",
 
     }
   },
@@ -36,8 +36,14 @@ export default {
         email: this.email,
         password: this.password
       }
-      debugger
       this.$root.$data.store.actions.login(user)
+      // if(this.$root.$data.state.error){
+      //   debugger
+      //   this.loginError = this.$root.$data.state.error
+      // }
+      // else{
+
+      // }
 
     }
   },

@@ -8,7 +8,7 @@
           <input type="text" v-model="name" class="form-control" placeholder="Name" aria-describedby="sizing-addon1">
           <input type="text" v-model="email" class="form-control" placeholder="Email" aria-describedby="sizing-addon1">
           <input type="password" v-model="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
-          <button type="button" @click="Register" class="btn btn-success btn-lg">Submit</button>
+          <button type="button" @click="register" class="btn btn-success btn-lg">Submit</button>
         </div>
         <div>
         </div>
@@ -39,7 +39,7 @@ export default {
         password: this.password
       }
       debugger
-      this.$root.$data.store.actions.login(user)
+      this.$root.$data.store.actions.register(user)
 
     }
   },

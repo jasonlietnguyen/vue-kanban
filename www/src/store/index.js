@@ -1,4 +1,10 @@
 import axios from 'axios'
+import router from '../router'
+
+
+function changeRoute(route){
+  router.push(route)
+}
 
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
@@ -8,7 +14,7 @@ let api = axios.create({
 
 // REGISTER ALL DATA HERE
 let state = {
-  boards: [{name: 'This is total rubbish'}],
+  boards: [{}],
   activeBoard: {},
   error: {}
 }
@@ -24,7 +30,7 @@ export default {
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
     getBoards() {
-      api('boards')
+      api('userboards')
         .then(res => {
           state.boards = res.data.data
         })
@@ -54,16 +60,37 @@ export default {
     login(user){
       api.post('login', user)
         .then(res => {
-          // if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
-          //   debugger
+          debugger
+          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
+            state.error = res.request.response
 
-          // }
+          }else{
+            debugger
+            changeRoute('/boards')
+          }
+
+
         })
         .catch(handleError)
-        debugger
-    }
+    },
+     register(user){
+      api.post('register', user)
+        .then(res => {
+          debugger
+          if(res.request.response == '{"error":{},"message":"Invalid Email or Password"}' ){
+            //Fix above line to work with register instead of login
+            state.error = res.request.response
+
+          }else{
+            debugger
+            this.login(user)
+          }
+
+
+        })
+        .catch(handleError)
 
   }
 
 }
-
+}
