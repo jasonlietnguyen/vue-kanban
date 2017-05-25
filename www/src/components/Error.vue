@@ -1,6 +1,8 @@
 <template>
   <div> 
-    Error: {{error}}
+    <div class="custom-error" v-if="error.message" @click="clearError">
+      Error: {{error.message}}
+    </div>
   </div>
 </template>
 
@@ -11,10 +13,22 @@ export default {
     error(){
       return this.$root.$data.store.state.error
     }
+  },
+  methods:{
+    clearError(){
+      this.$root.$data.store.actions.clearError()
+    }
   }
 }
 </script>
 
 <style scoped>
-
+  .custom-error{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background: red;
+    color: white;
+  }
 </style>
