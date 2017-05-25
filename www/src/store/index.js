@@ -57,7 +57,6 @@ export default {
         })
         .catch(handleError)
     },
-<<<<<<< HEAD
     login(user) {
       auth.post('login', user)
         .then(res => {
