@@ -98,7 +98,6 @@ export default {
           state.user = res.data.data
           router.push('/boards')
         }).catch((err =>{
-          router.push('/login')
         }))
     }
 
