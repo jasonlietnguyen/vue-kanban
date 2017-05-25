@@ -102,7 +102,7 @@ export default {
   },
 
   getCommentsbyTask: {
-    path: '/boards/:boardsId/lists/:listId/tasks/:taskId/comments',
+    path: '/boards/:boardId/lists/:listId/tasks/:taskId/comments',
     reqType: 'get',
     method(req, res, next){
       let action = 'Return comments associated with a Task'
@@ -114,6 +114,28 @@ export default {
               res.send(handleResponse(action, task))
           }).catch(error =>{
             return next(handleResponse(action, null, error))
+          })
+        })
+    }
+  },
+
+  deleletsChildrenOfBoards: {
+    path: '/boards/:boardId',
+    reqType: 'delete',
+    method(req, res, next){
+      debugger
+      let action = 'Removing all children of a Board'
+      Boards.findById(req.params.boardId)
+        .then(board =>{
+          Tasks.find({boardId: req.params.boardId})
+          .then(tasks =>{
+            Lists.find({boardId: req.params.boardId})
+            .then(lists =>{
+              Comments.find({boardId: req.params.boardId})
+              res.send(handleResponse(action))
+            }).catch(error =>{
+              return next(handleResponse(action, null, error))
+            })
           })
         })
     }
