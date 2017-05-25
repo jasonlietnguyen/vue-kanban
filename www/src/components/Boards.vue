@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{user.name}}</h1>
+    <h1>Hello {{user.name}}</h1>
     <form>
       <button @click="createBoard">Add Board</button>
     </form>

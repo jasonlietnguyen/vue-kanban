@@ -11,6 +11,9 @@
 import Error from './components/Error'
 export default {
   name: 'app',
+  mounted(){
+    this.$root.$data.store.actions.getAuth()
+  },
   components:{
     Error
   }

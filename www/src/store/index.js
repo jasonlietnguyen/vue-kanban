@@ -67,8 +67,9 @@ export default {
     login(user){
       auth.post('login', user)
         .then(res => {
+          debugger
           if(res.data.error){
-            handleError(res.data.error)
+              handleError(res.data.error)
             }
             changeRoute('/boards')
 
@@ -89,7 +90,17 @@ export default {
         })
         .catch(handleError)
 
-  }
+  },
+    getAuth(){
+      auth.get('/authenticate')
+        .then(res =>{
+          debugger
+          state.user = res.data.data
+          router.push('/boards')
+        }).catch((err =>{
+          router.push('/login')
+        }))
+    }
 
 }
 }
