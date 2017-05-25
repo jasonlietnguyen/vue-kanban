@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div>
     <button @click="createBoard">Add Board</button>
     <ul>
       <li v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)">x</span></li>
@@ -21,8 +21,6 @@ export default {
   methods:{
     createBoard(){
       this.$root.$data.store.actions.createBoard({
-        name: 'Testing board creation',
-        description: 'blarg'
       })
     },
     removeBoard(board){
