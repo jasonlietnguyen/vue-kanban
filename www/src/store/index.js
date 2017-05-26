@@ -37,7 +37,8 @@ export default {
         .catch(handleError)
     },
     getBoard(id) {
-      api('boards' + id)
+      debugger
+      api('boards/' + id)
         .then(res => {
           state.activeBoard = res.data.data
         })
