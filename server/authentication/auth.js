@@ -63,6 +63,7 @@ router.get('/authenticate', (req,res) => {
       data: user
     })
   }).catch(err=>{
+    router.push('/')
     return res.send({
       error:err
     })

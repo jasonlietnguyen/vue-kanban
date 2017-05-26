@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav navbar-toggler-right">
       <li class="nav-item">
-        <button type="button" class="btn btn-success"><router-link class="btn" to="/register">Register</router-link></button>      
+        <button type="button" class="btn btn-success"><router-link class="btn" to="/register">Register</router-link></button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-primary"><router-link class="btn" to="/login">Log In</router-link></button>
@@ -45,6 +45,9 @@
 export default {
   name: 'homepage',
   data(){
+    return {
+
+    }
 
   },
   computed:{},
