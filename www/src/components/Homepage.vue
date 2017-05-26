@@ -11,10 +11,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav navbar-toggler-right">
           <li class="nav-item">
-            <button type="button" class="btn btn-success"><router-link class="btn" to="/register">Register</router-link></button>
+            <router-link class="btn" to="/register"><button type="button" class="btn btn-success">Register</button></router-link>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-primary"><router-link class="btn" to="/login">Log In</router-link></button>
+            <router-link class="btn" to="/login"><button type="button" class="btn btn-primary">Log In</button></router-link>
           </li>
         </ul>
       </div>
@@ -24,16 +24,17 @@
         <div class="col-md-8">
           <h2 class="title">Trello lets you work more <br> collaboratively and get more done.</h2>
           <h5>Trello’s boards, lists, and cards enable you to organize and prioritize your projects in a fun, flexible and rewarding
-            way.</h5>
+            way.
+          </h5>
           <br>
           <button type="button" class="btn btn-success">Sign Up - It's Free</button><br><br>
           <p>Already use Trello? <a href="http://localhost:8080/#/login">Log In.</a></p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-8 offset-md-4">
+        <div class="col-md-10 offset-md-2">
           <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/155358fcb5830aa596ac191b15bb0bb2/trello-collaborate-home.png"
-            alt="" width="800px">
+            alt="" width="100%">
           <br><br><br>
         </div>
       </div>
@@ -88,7 +89,8 @@
   }
 
   button {
-    margin-left: 0
+    margin-left: 0;
+    cursor: pointer;
   }
 
   img {
