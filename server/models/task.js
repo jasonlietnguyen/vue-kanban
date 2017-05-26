@@ -1,5 +1,5 @@
 import { models } from '../config/constants'
-import Comments from '/comment'
+import Comments from './comment'
 
 let mongoose = require('mongoose')
 let ObjectId = mongoose.Schema.ObjectId

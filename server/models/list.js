@@ -1,5 +1,5 @@
 import { models } from '../config/constants'
-import Tasks from '/task'
+
 
 let mongoose = require('mongoose')
 let ObjectId = mongoose.Schema.ObjectId
@@ -15,8 +15,5 @@ var schema = new mongoose.Schema({
 
 });
 
-schema.pre('remove', function (next){
-  Tasks.find({boardId: this._id}).remove().exec(next)
-})
 
 module.exports = mongoose.model(models.list.name, schema);
