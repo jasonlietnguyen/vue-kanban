@@ -5,6 +5,7 @@ import Board from 'components/Board'
 import Homepage from 'components/Homepage'
 import Login from 'components/Login'
 import Register from 'components/Register'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -16,14 +17,31 @@ export default new Router({
       component: Homepage
     },
     {
-      path: '/boards',
-      name: 'Boards',
-      component: Boards
-    },{
-      path: '/boards/:id',
-      name: 'Board',
-      component: Board
+      path: '/dashboard',
+      component: {
+        template: `<div>
+        <router-view></router-view>
+      </div>`},
+      beforeEnter(to, from, next) {
+        console.log(store)
+        if (store.state.user.name) {
+          return next()
+        }
+        return next('/login')
+      },
+      children: [
+        {
+          path: '',
+          name: 'Boards',
+          component: Boards
+        }, {
+          path: '/boards/:id',
+          name: 'Board',
+          component: Board
+        },
+      ]
     },
+
     {
       path: '/login',
       name: 'Login',

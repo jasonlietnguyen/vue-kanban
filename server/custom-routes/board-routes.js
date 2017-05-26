@@ -68,15 +68,12 @@ export default {
       let action = 'Return a Board and all Lists on it'
       Boards.findById(req.params.boardId)
         .then(board => {
-          debugger
           Lists.find({boardId: req.params.boardId})
             .then(lists => {
-            debugger
             board.lists = lists
             res.send(handleResponse(action, board))
           })
         }).catch(error =>{
-          debugger
           return next(handleResponse(action, null, error))
         })
     }
@@ -91,7 +88,6 @@ export default {
         .then(list =>{
           Tasks.find({listId: req.params.listId})
           .then(tasks => {
-            debugger
             list.tasks = tasks
             res.send(handleResponse(action, list))
           })
