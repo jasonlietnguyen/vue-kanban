@@ -1,41 +1,45 @@
 <template>
-  <div>
-    <h1>Hello {{user.name}}</h1>
-    <form>
-      <button @click="createBoard">Add Board</button>
-    </form>
-    <ul>
-      <li v-for="board in boards"><router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)">x</span></li>
-    </ul>
+  <div class="boards">
+    <div class="container">
+      <h1>Hello {{user.name}}</h1>
+      <form>
+        <button @click="createBoard">Add Board</button>
+      </form>
+      <ul>
+        <li v-for="board in boards">
+          <router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)">x</span></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'boards',
-  mounted(){
-    this.$root.$data.store.actions.getBoards()
-  },
-  computed:{
-    boards(){
-      return this.$root.$data.store.state.boards
+  export default {
+    name: 'boards',
+    mounted() {
+      this.$root.$data.store.actions.getBoards()
     },
-    user(){
-      return this.$root.$data.store.state.user
-    }
-  },
-  methods:{
-    createBoard(){
-      this.$root.$data.store.actions.createBoard({
-        name: "NATHANS TEST BOARD",
-        description: "BOARDING THINGS"
-      })
+    computed: {
+      boards() {
+        return this.$root.$data.store.state.boards
+      },
+      user() {
+        return this.$root.$data.store.state.user
+      }
     },
-    removeBoard(board){
-      this.$root.$data.store.actions.removeBoard(board)
+    methods: {
+      createBoard() {
+        this.$root.$data.store.actions.createBoard({
+          name: "NATHANS TEST BOARD",
+          description: "BOARDING THINGS"
+        })
+      },
+      removeBoard(board) {
+        this.$root.$data.store.actions.removeBoard(board)
+      }
     }
   }
-}
+
 </script>
 
 <style scoped>
