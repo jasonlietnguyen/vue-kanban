@@ -27,7 +27,7 @@ export default new Router({
         if (store.state.user.name) {
           return next()
         }
-        return next('/login')
+        return next('/')
       },
       children: [
         {
