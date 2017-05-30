@@ -15,6 +15,7 @@ let auth = axios.create({
 // REGISTER ALL DATA HERE
 let state = {
   boards: [],
+  lists: {},
   activeBoard: {},
   error: {},
   user: {}
@@ -37,10 +38,16 @@ export default {
         .catch(handleError)
     },
     getBoard(id) {
-      debugger
       api('boards/' + id)
         .then(res => {
           state.activeBoard = res.data.data
+        })
+        .catch(handleError)
+    },
+    getLists(id){
+      api('boards/' + id + '/lists')
+        .then(res =>{
+          state.lists = res.data.data.lists
         })
         .catch(handleError)
     },
