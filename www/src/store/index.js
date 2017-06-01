@@ -18,7 +18,9 @@ let state = {
   lists: {},
   activeBoard: {},
   error: {},
-  user: {}
+  user: {},
+  tasks: {},
+  comments: {}
 }
 
 let handleError = (err) => {
