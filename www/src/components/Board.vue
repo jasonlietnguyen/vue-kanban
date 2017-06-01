@@ -12,17 +12,16 @@
 export default {
   name: 'board',
   mounted(){
-    this.$root.$data.store.actions.getBoard(this.$route.params.id)
-    this.$root.$data.store.actions.getLists(this.$route.params.id)
+    this.$store.dispatch('getBoard', this.$route.params.id)
+    this.$store.dispatch('getLists', this.$route.params.id)
   },
 
   computed:{
     board(){
-      return this.$root.$data.store.state.activeBoard
+      return this.$store.state.activeBoard
     },
     lists(){
-      debugger
-      return this.$root.$data.store.state.lists
+      return this.$store.state.lists
     }
   }
 }

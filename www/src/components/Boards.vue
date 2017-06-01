@@ -52,26 +52,26 @@
     },
 
     mounted() {
-      this.$root.$data.store.actions.getBoards()
+      this.$store.dispatch('getBoards')
     },
     computed: {
       boards() {
-        return this.$root.$data.store.state.boards
+        return this.$store.state.boards
       },
       user() {
-        return this.$root.$data.store.state.user
+        return this.$store.state.user
       }
     },
     methods: {
       createBoard() {
         debugger
-        this.$root.$data.store.actions.createBoard({
+        this.$store.dispatch('createBoard', {
           name: this.boardName,
           description: this.boardDescription
         })
       },
       removeBoard(board) {
-        this.$root.$data.store.actions.removeBoard(board)
+        this.$store.dispatch('removeBoard', board)
       }
     }
   }

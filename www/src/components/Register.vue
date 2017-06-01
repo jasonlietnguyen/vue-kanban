@@ -33,7 +33,8 @@
     computed: {},
     methods: {
       register() {
-        this.$root.$data.store.actions.register({
+        debugger
+        this.$store.dispatch('register', {
           name: this.name,
           email: this.email,
           password: this.password
@@ -41,7 +42,7 @@
       }
     },
     components: {}
-  }
+    }
 
 </script>
 

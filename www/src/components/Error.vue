@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div>
     <div class="custom-error" v-if="error.message" @click="clearError">
       Error: {{error.message}}
     </div>
@@ -11,7 +11,7 @@ export default {
   name: 'error',
   computed:{
     error(){
-      return this.$root.$data.store.state.error
+      return this.$store.state.error
     }
   },
   methods:{
