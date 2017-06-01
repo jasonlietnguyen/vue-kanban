@@ -27,11 +27,14 @@
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-list">Create A List</button>
       <h6>Active Board: {{board}}</h6>
       <h1 class="board-name">{{board.name}}</h1>
-      <ul>
-        <li v-for="list in lists">
-          <list :listData="list"></list>
-        </li>
-      </ul>
+      <div class="row">
+        <div class="col-xl-6">
+          <!--Jason please fix this so that both cards  show up side by side, instead of ontop of each other! I can't figure it out-->
+          <div v-for="list in lists">
+            <list :listData="list"></list>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -40,8 +43,8 @@
   import List from './list'
   export default {
     name: 'board',
-    data(){
-      return{
+    data() {
+      return {
         listName: '',
         listDescription: ''
       }
@@ -60,7 +63,7 @@
       }
     },
     methods: {
-      createList(){
+      createList() {
         this.$store.dispatch('createList', {
           name: this.listName,
           description: this.listDescription,

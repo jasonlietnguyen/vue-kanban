@@ -93,6 +93,14 @@ export default new Vuex.Store ({
         })
 
     },
+    removeList({commit, dispatch}, list){
+      api.delete('board/' + board._id + '/lists/' + list._id)
+        .then(res =>{
+          dispatch('getLists')
+        })
+        .catch(handleError)
+
+    },
     createBoard({commit, dispatch} , board) {
       api.post('boards', board)
         .then(res => {
@@ -107,6 +115,9 @@ export default new Vuex.Store ({
           dispatch('getBoards')
         })
         .catch(handleError)
+    },
+    getTasks(){
+
     },
     login({commit, dispatch},user) {
       auth.post('login', user)

@@ -32,7 +32,7 @@
 
       <ul>
         <li v-for="board in boards">
-          <router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)">x</span></li>
+          <router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span></li>
       </ul>
     </div>
   </div>
