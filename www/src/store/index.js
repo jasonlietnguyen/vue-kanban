@@ -43,8 +43,8 @@ export default new Vuex.Store ({
       state.activeBoard = board
     },
 
-    setLists(state, id){
-      state.lists = res.data.data.lists
+    setLists(state, lists){
+      state.lists = lists
     },
 
     setAuth(state, user){
@@ -85,6 +85,14 @@ export default new Vuex.Store ({
         })
         .catch(handleError)
     },
+    createList({commit, dispatch}, list){
+      api.post('lists', list)
+        .then(res =>{
+          commit('setLists', list)
+          dispatch('getLists', list.boardId)
+        })
+
+    },
     createBoard({commit, dispatch} , board) {
       api.post('boards', board)
         .then(res => {
@@ -110,14 +118,12 @@ export default new Vuex.Store ({
         .catch(handleError)
     },
     register({commit, dispatch}, user) {
-      debugger
      auth.post('register', user)
       .then(res =>{
         commit('setRegister', res.data)
         if(res.data.error){
           return handleError(res.data.error)
         }
-          debugger
 
         //LETS REDIRECT THE PAGE
       })
