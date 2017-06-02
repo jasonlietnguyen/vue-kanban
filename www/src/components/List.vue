@@ -23,25 +23,24 @@
         </div>
       </div>
     </form>
-        <div class="card text-center">
-          <div class="card-header">
-            <p class="text-left">{{listData.name}}<span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span></p> 
-          </div>
-          <div class="card-block">
-            <h4 class="task-title" v-for="task in tasks">
-              <task :taskData="task"></task>
 
-            </h4>
-            <!--Just needs a trashcan icon so we can delete lists, function is already created-->
-          </div>
-          <div class="card-footer text-muted">
-            2 days ago <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-task">Create A Task</button>
-            <!--Change this to go off of our session so we can get actual time since post-->
-          </div>
+    <div class="col-xl-6">
+      <div class="card text-center">
+        <div class="card-header">
+          {{listData.name}} <span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span>
         </div>
-        <br>
-    <!--If You want all the listdata just {{listData}}-->
-  </div>
+        <div class="card-block">
+          <div v-for="task in tasks">
+            <h4 class="task-title">{{task.name}}</h4>
+            <!--<task :taskData="task">{{task.name}}</task>-->
+            <div class="card-footer text-muted">
+              2 days ago <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-task">Create A Task</button>
+              <!--Change this to go off of our session so we can get actual time since post-->
+            </div>
+            <br>
+          </div>
+          <!--If You want all the listdata just {{listData}}-->
+        </div>
 </template>
 
 
@@ -50,6 +49,7 @@
   export default {
     name: 'list',
     props: ['list-data'],
+
     data() {
       return {
         taskName: '',
@@ -58,21 +58,24 @@
       }
     },
     mounted() {
-      this.$store.dispatch('getTasks', this.listData.boardId, this.listData._id)
+      let tasksInfo = {
+        boardId: this.listData.boardId,
+        listId: this.listData._id
+      }
+      this.$store.dispatch('getTasks', tasksInfo)
 
     },
     computed: {
       tasks() {
-        this.$store.state.tasks
+        return this.$store.state.tasks
+        console.log(this.$store.state.tasks)
       }
     },
     methods: {
       removeList(list) {
-        debugger
         this.$store.dispatch('removeList', list)
       },
       createTask() {
-        debugger
         this.$store.dispatch('createTask', {
           name: this.taskName,
           description: this.taskDescription,
@@ -93,12 +96,14 @@
   .task-title {
     color: black;
   }
-  p{
+
+  p {
     color: #333;
     font-weight: 700;
     margin-bottom: 0;
   }
-  i{
+
+  i {
     color: red;
     cursor: pointer;
   }
@@ -109,5 +114,4 @@
     float: right;
     /*Move this trashcan to the right hand side of the card header please*/
   }
-
 </style>

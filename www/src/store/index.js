@@ -46,13 +46,16 @@ export default new Vuex.Store ({
     setLists(state, lists){
       state.lists = lists
     },
+    setTasks(state, tasks){
+      debugger
+      state.tasks = tasks
+    },
 
     setAuth(state, user){
       state.user = user || {}
       router.push('/dashboard')
     },
     setRegister(state, user){
-      debugger
       state.user = user
       router.push('/dashboard')
     },
@@ -116,13 +119,20 @@ export default new Vuex.Store ({
         })
         .catch(handleError)
     },
-    getTasks(){
+    getTasks({commit, dispatch}, tasks){
+      if(tasks.boardId !== undefined){
+
+      api.get('boards/' + tasks.boardId + '/lists/' + tasks.listId + '/tasks')
+        .then(res =>{
+          commit('setTasks', res.data.data.tasks)
+        })
+      }
 
     },
     createTask({commit, dispatch}, task){
       api.post('tasks', task)
         .then(res => {
-          dispatch('getTasks')
+          dispatch('getTasks', task)
         })
     },
     login({commit, dispatch},user) {

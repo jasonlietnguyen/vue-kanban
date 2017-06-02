@@ -92,7 +92,7 @@ export default {
             res.send(handleResponse(action, list))
           })
         }).catch(error =>{
-          return next(handleResponse(action, null, eroor))
+          return next(handleResponse(action, null, error))
         })
     }
   },
