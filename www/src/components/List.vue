@@ -32,19 +32,15 @@
         <div class="card-block">
           <div v-for="task in tasks">
             <h4 class="task-title">{{task.name}}</h4>
-              <!--<task :taskData="task">{{task.name}}</task>-->
+            <!--<task :taskData="task">{{task.name}}</task>-->
+            <div class="card-footer text-muted">
+              2 days ago <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-task">Create A Task</button>
+              <!--Change this to go off of our session so we can get actual time since post-->
+            </div>
+            <br>
           </div>
-          <!--Just needs a trashcan icon so we can delete lists, function is already created-->
+          <!--If You want all the listdata just {{listData}}-->
         </div>
-        <div class="card-footer text-muted">
-          2 days ago <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-task">Create A Task</button>
-          <!--Change this to go off of our session so we can get actual time since post-->
-        </div>
-      </div>
-      <br>
-    </div>
-    <!--If You want all the listdata just {{listData}}-->
-  </div>
 </template>
 
 
@@ -71,7 +67,7 @@
     },
     computed: {
       tasks() {
-         return this.$store.state.tasks
+        return this.$store.state.tasks
         console.log(this.$store.state.tasks)
       }
     },
@@ -101,13 +97,21 @@
     color: black;
   }
 
-  .card-header {
-    color: black;
+  p {
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  i {
+    color: red;
+    cursor: pointer;
   }
 
   .trashcan {
     color: black;
     font-size: 20px;
+    float: right;
     /*Move this trashcan to the right hand side of the card header please*/
   }
 </style>
