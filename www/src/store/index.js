@@ -94,9 +94,9 @@ export default new Vuex.Store ({
 
     },
     removeList({commit, dispatch}, list){
-      api.delete('board/' + board._id + '/lists/' + list._id)
+      api.delete('lists/' + list._id)
         .then(res =>{
-          dispatch('getLists')
+          dispatch('getLists', list.boardId)
         })
         .catch(handleError)
 
@@ -118,6 +118,12 @@ export default new Vuex.Store ({
     },
     getTasks(){
 
+    },
+    createTask({commit, dispatch}, task){
+      api.post('tasks', task)
+        .then(res => {
+          dispatch('getTasks')
+        })
     },
     login({commit, dispatch},user) {
       auth.post('login', user)

@@ -27,14 +27,10 @@
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-list">Create A List</button>
       <h6>Active Board: {{board}}</h6>
       <h1 class="board-name">{{board.name}}</h1>
-      <div class="row">
-        <div class="col-xl-6">
-          <!--Jason please fix this so that both cards  show up side by side, instead of ontop of each other! I can't figure it out-->
-          <div v-for="list in lists">
-            <list :listData="list"></list>
-          </div>
+      <!--Jason please fix this so that both cards  show up side by side, instead of ontop of each other! I can't figure it out-->
+        <div v-for="list in lists">
+          <list :listData="list"></list>
         </div>
-      </div>
     </div>
   </div>
 </template>
