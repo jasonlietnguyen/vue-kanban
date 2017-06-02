@@ -24,24 +24,22 @@
       </div>
     </form>
 
-      <div class="card text-center">
-        <div class="card-header">
-          {{listData.name}} <span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span>
-        </div>
-        <div class="card-block">
-          <div v-for="task in tasks">
-            <h4 class="task-title">{{task.name}}</h4>
-            <!--<task :taskData="task">{{task.name}}</task>-->
-            <div class="card-footer text-muted">
-              2 days ago <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-task">Create A Task</button>
-              <!--Change this to go off of our session so we can get actual time since post-->
-            </div>
-            <br>
-          </div>
-          <!--If You want all the listdata just {{listData}}-->
+
+    <div class="card text-center">
+      <div class="card-header">
+        {{listData.name}} <span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+      </div>
+      <div class="card-block">
+        <div v-for="task in tasks">
+          <h4 class="task-title" <task :taskData="task">{{task.name}}</task>>{{task.name}}</h4>
         </div>
       </div>
-  </div>
+      <div class="card-footer text-muted">
+          2 days ago <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-task">Create A Task</button>
+          <!--Change this to go off of our session so we can get actual time since post-->
+        </div>
+      </div>
+    </div>
 </template>
 
 
@@ -69,7 +67,6 @@
     computed: {
       tasks() {
         return this.$store.state.tasks
-        console.log(this.$store.state.tasks)
       }
     },
     methods: {
@@ -116,3 +113,6 @@
     /*Move this trashcan to the right hand side of the card header please*/
   }
 </style>
+
+
+<task :taskData="task">{{task.name}}</task>
