@@ -33,15 +33,15 @@
 
       <div class="row">
         <div v-for="board in boards" class="col-md-4">
-          <router-link :to="'/boards/'+board._id">
-            <br>
-            <div class="background">
-              <div class="container">
-                <br>
-                <span class="name">{{board.name.toUpperCase()}}</span> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
-              </div>
+          <br>
+          <div class="background">
+            <div class="container">
+              <br>
+              <router-link :to="'/boards/'+board._id">
+                <span class="name">{{board.name.toUpperCase()}}</span>
+              </router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
-          </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -106,12 +106,19 @@
   .fa-trash {
     float: right;
     font-size: 24px;
+    cursor: pointer;
   }
-
+  .fa-trash:hover{
+    color: red;
+    font-size: 28px;
+  }
   .background {
-    height: 100px;
+    height: 120px;
     background-image: url(https://static.pexels.com/photos/413106/pexels-photo-413106.jpeg);
     background-size: cover;
     background-position: center;
+  }
+  body{
+    background-color: white;
   }
 </style>
