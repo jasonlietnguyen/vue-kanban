@@ -1,5 +1,6 @@
 <template>
   <div class="task">
+    {{task.name}}
   </div>
 </template>
 
@@ -9,6 +10,9 @@ export default {
   name: 'task',
   props:['task-data'],
   data(){
+    return{
+
+    }
 
 
   },
