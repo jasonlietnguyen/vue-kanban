@@ -28,9 +28,11 @@
       <h6>Active Board: {{board}}</h6>
       <h1 class="board-name">{{board.name}}</h1>
       <!--Jason please fix this so that both cards  show up side by side, instead of ontop of each other! I can't figure it out-->
-        <div v-for="list in lists">
+      <div class="row">
+      <div v-for="list in lists" class="col">
           <list :listData="list"></list>
-        </div>
+      </div>
+      </div>
     </div>
   </div>
 </template>

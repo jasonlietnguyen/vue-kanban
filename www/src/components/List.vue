@@ -23,11 +23,9 @@
         </div>
       </div>
     </form>
-
-      <div class="col-xl-6">
         <div class="card text-center">
           <div class="card-header">
-            {{listData.name}} <span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            <p class="text-left">{{listData.name}}<span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span></p> 
           </div>
           <div class="card-block">
             <h4 class="task-title" v-for="task in tasks">
@@ -42,7 +40,6 @@
           </div>
         </div>
         <br>
-      </div>
     <!--If You want all the listdata just {{listData}}-->
   </div>
 </template>
@@ -96,14 +93,21 @@
   .task-title {
     color: black;
   }
-
-  .card-header {
-    color: black;
+  p{
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  i{
+    color: red;
+    cursor: pointer;
   }
 
   .trashcan {
     color: black;
     font-size: 20px;
+    float: right;
     /*Move this trashcan to the right hand side of the card header please*/
   }
+
 </style>
