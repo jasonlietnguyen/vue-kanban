@@ -31,7 +31,8 @@
       </div>
       <div class="card-block">
         <div v-for="task in tasks">
-          <h4 class="task-title" <task :taskData="task">{{task.name}}</task>>{{task.name}}</h4>
+          <h4 class="task-title">{{task.name}}</h4>
+           <!--<task :taskData="task"> </task>  -->
         </div>
       </div>
       <div class="card-footer text-muted">
@@ -67,6 +68,7 @@
     computed: {
       tasks() {
         return this.$store.state.tasks
+        console.log( this.$store.state.tasks)
       }
     },
     methods: {
