@@ -31,18 +31,14 @@
 
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-board">Create A Board</button>
 
+          <div class="container">
         <div class="row">
-          <div v-for="board in boards" class="col-md-4">
+        <div v-for="board in boards" class="col-md-4">
         <br>
-            <div class="background">
-            <div class="container">
-              <br>
-              <router-link :to="'/boards/'+board._id"><span class="name">{{board.name.toUpperCase()}}</span></router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
-            </div>
-          </div>
-          <br>
-          </div>
-      </div>
+          <router-link :to="'/boards/'+board._id"><span class="name">{{board.name.toUpperCase()}}</span></router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+        </div>
+        </div>
+        </div>
     </div>
   </div>
 </template>
@@ -55,11 +51,8 @@
         boardName: "",
         boardDescription: "",
         saved: false
-
-
       }
     },
-
     mounted() {
       this.$store.dispatch('getBoards')
     },
@@ -84,38 +77,29 @@
       }
     }
   }
-
 </script>
 
 <style scoped>
-
   .user-name {
     text-align: center;
   }
-
   .modal-title {
     color: black;
   }
-
   .modal-text {
     color: black;
   }
-
-  .name {
+  .name{
     font-size: 20px;
     font-weight: 700;
   }
-
-  .fa-trash {
+  .fa-trash{
     float: right;
     font-size: 24px;
   }
-  .background {
+  .col-md-4{
     height: 100px;
     background-image: url(https://static.pexels.com/photos/245537/pexels-photo-245537.jpeg);
     background-size: cover;
-  }
-  body{
-    background-color: white;
   }
 </style>
