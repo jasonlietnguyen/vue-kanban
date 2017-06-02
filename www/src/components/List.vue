@@ -24,7 +24,6 @@
       </div>
     </form>
 
-    <div class="col-xl-6">
       <div class="card text-center">
         <div class="card-header">
           {{listData.name}} <span class="trashcan" @click="removeList(listData)"><i class="fa fa-trash" aria-hidden="true"></i></span>
@@ -41,6 +40,8 @@
           </div>
           <!--If You want all the listdata just {{listData}}-->
         </div>
+      </div>
+  </div>
 </template>
 
 
