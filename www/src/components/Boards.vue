@@ -33,13 +33,15 @@
 
       <div class="row">
         <div v-for="board in boards" class="col-md-4">
-          <br>
-          <div class="background">
-            <div class="container">
-              <br>
-              <router-link :to="'/boards/'+board._id"><span class="name">{{board.name.toUpperCase()}}</span></router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+          <router-link :to="'/boards/'+board._id">
+            <br>
+            <div class="background">
+              <div class="container">
+                <br>
+                <span class="name">{{board.name.toUpperCase()}}</span> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+              </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -108,7 +110,8 @@
 
   .background {
     height: 100px;
-    background-image: url(https://static.pexels.com/photos/245537/pexels-photo-245537.jpeg);
+    background-image: url(https://static.pexels.com/photos/413106/pexels-photo-413106.jpeg);
     background-size: cover;
+    background-position: center;
   }
 </style>
