@@ -4,7 +4,8 @@
       <!-- Modal -->
       <form @submit.prevent="createBoard">
         <!-- Modal -->
-        <div class="modal fade" id="create-board" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" v-if="!saved">
+        <div class="modal fade" id="create-board" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+          v-if="!saved">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -30,10 +31,14 @@
 
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create-board">Create A Board</button>
 
-      <ul>
-        <li v-for="board in boards">
-          <router-link :to="'/boards/'+board._id">{{board.name}}</router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span></li>
-      </ul>
+          <div class="container">
+        <div class="row">
+        <div v-for="board in boards" class="col-md-4">
+        <br>
+          <router-link :to="'/boards/'+board._id"><span class="name">{{board.name.toUpperCase()}}</span></router-link> <span @click="removeBoard(board)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+        </div>
+        </div>
+        </div>
     </div>
   </div>
 </template>
@@ -89,5 +94,18 @@
 
   .modal-text {
     color: black;
+  }
+  .name{
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .fa-trash{
+    float: right;
+    font-size: 24px;
+  }
+  .col-md-4{
+    height: 100px;
+    background-image: url(https://static.pexels.com/photos/245537/pexels-photo-245537.jpeg);
+    background-size: cover;
   }
 </style>
